@@ -1,4 +1,4 @@
-# Sendle Front End Developer take home exercise
+# Sendle front end developer take home exercise
 
 **DO NOT FORK THIS REPOSITORY IN GITHUB, CLONE IT AND FOLLOW THE INSTRUCTIONS FOR SUBMISSION AT THE END OF THE README**
 
@@ -9,12 +9,8 @@ JavaScript, and React and to see how you think and your approach to solving prob
 
 The problem we've chosen is a quoting tool, similar to what exists on
 in Sendle. This will involve working with Sendle's quoting API to fetch
-data
-
-pricing system, since we have one of those at Sendle.
-We're also trying to mimic what it's like to calculate a price for
-the delivery of a parcel, since we also do that quite extensively. So hopefully it gives
-you a flavour for some of the problems you might work on at Sendle.
+data from the pricing system, as well as handling and responding to
+errors and building a small user interface.
 
 * Write as many additional tests and classes as you feel you need.
 * It's up to you to define the data structures used
@@ -25,6 +21,50 @@ you a flavour for some of the problems you might work on at Sendle.
 Good luck, have fun.
 
 ## The Brief
+
+### Single Page Quote Tool
+
+This project is a small quote tool designed to help users get instant shipping quotes on the go. It uses the Sendle API to return rates and delivery ETAs based on the pickup and delivery information that is input by the user. The rates are filtered by plan.
+
+### How it works
+
+The tool consists of a form, where the user enters pickup and delivery location details, and a results screen that shows shipping rates for each of Sendle's parcel sizes, and a delivery ETA for that route when the "get quote" button is clicked.
+
+The input route is shown at the top of the results screen and clicking "change route" will take the user back to the form so they can enter new details and resubmit.
+
+Using a select dropdown at the top of the rates table, the user can choose one of three Sendle plans to view different prices.
+
+"Start sendling now" takes the user to the sign-in screen at [https://www.sendle.com/users/sign_in](https://www.sendle.com/users/sign_in)
+
+### Design files
+
+Project designs can be viewed, downloaded and/or inspected via Sketch Cloud here - [https://www.sketch.com/s/6d161d05-ba5d-430c-a601-bb0cf35a9433](https://www.sketch.com/s/6d161d05-ba5d-430c-a601-bb0cf35a9433)
+
+### A bit about plans
+
+Sendle's Standard plan is "perfect for personal senders" and has no minimum parcel orders.
+
+Premium is "designed for small business" and requires a minimum of 20 parcel orders per month.
+
+Pro is "ideal for established business" and requires a minimum of 200 parcel orders per month.
+
+### Technical Notes
+
+Documentation for Sendle's API can be found here: [https://api-doc.sendle.com/#getting-quotes](https://api-doc.sendle.com/#getting-quotes)
+
+Invalid quote requests will return a JSON error payload from the server with a 422 response, for example: 
+
+```json
+{
+	"messages": {
+		"pickup_suburb":["does not match Pickup Postcode"],
+		"pickup_postcode":["does not match Pickup Suburb"]
+	},
+	"error": "unprocessable_entity",
+  "error_description": "The data you supplied is invalid. Error messages are in the messages section. Please fix those fields and try again."
+}
+```
+
 
 ## Getting Started
 
