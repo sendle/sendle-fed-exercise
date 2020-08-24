@@ -75,6 +75,16 @@ yarn start
 yarn run test
 ```
 
+## FAQ
+
+### Do I need an account to get quotes?
+
+No, the quoting API supports [unauthenticated access](https://api-doc.sendle.com/#getting-quotes) which will return price points for all plans for the requested route and parcel size.
+
+### Can I get all price points in one request via the API?
+
+No, you will need to query the API for each size and route combination. Size break points are on [screen 3](https://www.sketch.com/s/6d161d05-ba5d-430c-a601-bb0cf35a9433/a/jmqwkG) in Sketch. The quoting API does not require volume to be provided.
+
 ## Submitting your work
 
 When you have completed the exercise and wish to submit your work, please do the following:
